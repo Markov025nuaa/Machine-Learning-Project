@@ -14,3 +14,16 @@ __Procedure description__:
 3. Generate image pixel array on all sets and generate augment on training set to get the feature X. 
 4. Train the model using feature X and target y from training set. 
 5. Check validation loss using validation set. If the loss (IoU metric) is higher than -0.2, keep training using next 48 images. Else, save the model and make predictions on test set. 
+
+
+__Unet model v1__
+
+1. Loss history
+
+<img src="doc/loss_history.png"  alt="Loss history" />
+
+2. Prediction Comparison
+
+<img src="doc/prediction_comparison.png"  alt="Prediction Comparison" />
+
+
