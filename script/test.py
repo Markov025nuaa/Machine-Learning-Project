@@ -4,6 +4,10 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 from skimage.io import imread
 import matplotlib.pyplot as plt
 from matplotlib.cm import get_cmap
+import matplotlib
+
+matplotlib.use('Agg')
+
 from skimage.segmentation import mark_boundaries
 # from skimage.util import montage2d as montage
 from skimage.morphology import binary_opening, disk, label
@@ -340,8 +344,6 @@ while True:
 
 import pickle
 
-#with open('loss_history.p', 'wb') as fp:
-#    pickle.dump(loss_history, fp, protocol=pickle.HIGHEST_PROTOCOL) 
 
 
 seg_model.load_weights(weight_path)
@@ -355,18 +357,44 @@ with open("model.json", "w") as json_file:
 pred_y = seg_model.predict(valid_x)
 
 #with open('pred_y.p', 'wb') as fp:
-#    pickle.dump(pred_y, fp, protocol=pickle.HIGHEST_PROTOCOL) 
+#    pickle.dump(pred_y, fp, protocol=pickle.HIGHEST_PROTOCOL)
+
+#with open('loss_history.p', 'wb') as fp:
+#    pickle.dump(loss_history, fp)
+#
+#for mh in loss_history:
 
 
-def show_loss(loss_history):
-    epochs = np.concatenate([mh.epoch for mh in loss_history])
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 10))
-    ax1.plot(epochs, np.concatenate([mh.history['loss'] for mh in loss_history]), 'b-',epochs, np.concatenate([mh.history['val_loss'] for mh in loss_history]), 'r-')
-    ax1.set_title('Loss', fontsize=15)
-    ax2.plot(epochs, np.concatenate([mh.history['binary_accuracy'] for mh in loss_history]), 'b-', epochs, np.concatenate([mh.history['val_binary_accuracy'] for mh in loss_history]), 'r-')
-    ax2.legend(['Training', 'Validation'])
-    ax2.set_title('Binary Accuracy (%)', fontsize=15)
-    fig.savefig('loss_history')
+
+#def show_loss(loss_history):
+epochs = np.concatenate([mh.epoch for mh in loss_history])
+with open('epochs.p', 'wb') as fp:
+    pickle.dump(epochs, fp)
+
+loss_loss = np.concatenate([mh.history['loss'] for mh in loss_history])
+with open('loss_loss.p', 'wb') as fp:
+    pickle.dump(loss_loss, fp)
+
+val_loss = np.concatenate([mh.history['val_loss'] for mh in loss_history])
+with open('val_loss.p', 'wb') as fp:
+    pickle.dump(val_loss, fp)
+
+bi_acc = np.concatenate([mh.history['binary_accuracy'] for mh in loss_history])
+with open('bi_acc.p', 'wb') as fp:
+    pickle.dump(bi_acc, fp)
+
+val_bi_acc = np.concatenate([mh.history['val_binary_accuracy'] for mh in loss_history])
+with open('val_bi_acc.p', 'wb') as fp:
+    pickle.dump(val_bi_acc, fp)
 
 
-show_loss(loss_history)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(22, 10))
+ax1.plot(epochs, np.concatenate([mh.history['loss'] for mh in loss_history]), 'b-',epochs, np.concatenate([mh.history['val_loss'] for mh in loss_history]), 'r-')
+ax1.set_title('Loss', fontsize=15)
+ax2.plot(epochs, np.concatenate([mh.history['binary_accuracy'] for mh in loss_history]), 'b-', epochs, np.concatenate([mh.history['val_binary_accuracy'] for mh in loss_history]), 'r-')
+ax2.legend(['Training', 'Validation'])
+ax2.set_title('Binary Accuracy (%)', fontsize=15)
+fig.savefig('loss_history')
+
+
+#show_loss(loss_history)
