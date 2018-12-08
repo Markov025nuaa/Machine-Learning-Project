@@ -19,7 +19,7 @@ train_image_dir = 'data/image_data'
 
 ############################## Hyperparameters ######################################
 
-BATCH_SIZE = 48
+BATCH_SIZE = 100
 EDGE_CROP = 16
 GAUSSIAN_NOISE = 0.1
 UPSAMPLE_MODE = 'SIMPLE'
