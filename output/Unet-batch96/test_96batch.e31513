@@ -1,0 +1,29 @@
+/share/pkg/python/3.6.2/install/lib/python3.6/site-packages/matplotlib/__init__.py:1405: UserWarning: 
+This call to matplotlib.use() has no effect because the backend has already
+been chosen; matplotlib.use() must be called *before* pylab, matplotlib.pyplot,
+or matplotlib.backends is imported for the first time.
+
+  warnings.warn(_use_error_msg)
+Using TensorFlow backend.
+WARNING:tensorflow:From /share/pkg/python/3.6.2/install/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1188: calling reduce_sum (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /share/pkg/python/3.6.2/install/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1290: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:Variable *= will be deprecated. Use `var.assign(var * other)` if you want assignment to the variable value or `x = x * y` if you want a new python Tensor object.
+2018-12-08 14:08:14.626905: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 AVX512F FMA
+2018-12-08 14:08:14.878642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1405] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:3b:00.0
+totalMemory: 15.90GiB freeMemory: 15.61GiB
+2018-12-08 14:08:14.878674: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1484] Adding visible gpu devices: 0
+2018-12-08 14:08:15.212096: I tensorflow/core/common_runtime/gpu/gpu_device.cc:965] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-12-08 14:08:15.212143: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971]      0 
+2018-12-08 14:08:15.212149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] 0:   N 
+2018-12-08 14:08:15.212380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1097] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 15129 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:3b:00.0, compute capability: 6.0)
+2018-12-08 14:08:15.539541: I tensorflow/core/common_runtime/process_util.cc:69] Creating new thread pool with default inter op setting: 28. Tune using inter_op_parallelism_threads for best performance.
+Traceback (most recent call last):
+  File "test_batch_96.py", line 400, in <module>
+    json_file.write(loss_history)
+TypeError: write() argument must be str, not list
